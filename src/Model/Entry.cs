@@ -3,13 +3,13 @@
 public class Entry
 {
     public List<string> Tags { get; set; } = [];
-    public string Description { get; set; }
+    public string Message { get; set; }
     public DateTime CreatedAt { get; set; }
 
-    public Entry(List<string> tags, string description, DateTime createdAt)
+    public Entry(List<string> tags, string message, DateTime createdAt)
     {
         Tags.AddRange(tags);
-        Description = description;
+        Message = message;
         CreatedAt = createdAt;
     }
 }

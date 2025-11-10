@@ -4,12 +4,20 @@ namespace DevBank.Repository;
 
 public class JsonRepository : IRepository
 {
+    private readonly string _dataFilePath;
+    
+    //defaults to file path but allows for injecting a json file for tests
+    public JsonRepository(string file = "./Data/entries.json")
+    {
+        _dataFilePath = file;
+    }
+    
     public void SaveEntry(Entry entry)
     {
         
     }
 
-    public List<Entry> FindEntriesByDescription(string phrase)
+    public List<Entry> FindEntriesByMessagePhrase(string phrase)
     {
         throw new NotImplementedException();
     }
