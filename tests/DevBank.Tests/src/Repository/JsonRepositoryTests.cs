@@ -15,7 +15,7 @@ public class JsonRepositoryTests
         _repository.DeleteAll();
         
         var tags = new List<string> {"testTag"};
-        var entry = new Entry(tags, "Test Message", DateTime.Now);
+        var entry = new Entry("Test Message", tags, DateTime.Now);
         _repository.Save(entry);
 
         var entries = _repository.FindAll();
@@ -33,7 +33,7 @@ public class JsonRepositoryTests
         _repository.DeleteAll();
         
         var tags = new List<string> {"testTag"};
-        var entry = new Entry(tags, "Test Message", DateTime.Now);
+        var entry = new Entry("Test Message", tags, DateTime.Now);
         _repository.Save(entry);
 
         var entries = _repository.FindAll();
@@ -45,7 +45,7 @@ public class JsonRepositoryTests
         Assert.Equal("Test Message", entries[0].Message);
 
         tags = ["testTag2"];
-        entry = new Entry(tags, "Test Message 2", DateTime.Now);
+        entry = new Entry("Test Message 2", tags, DateTime.Now);
         _repository.Save(entry);
 
         entries = _repository.FindAll();
@@ -69,7 +69,7 @@ public class JsonRepositoryTests
         Assert.True(string.IsNullOrEmpty(File.ReadAllText(EntriesFilePath)));
         
         var tags = new List<string> {"testTag"};
-        var entry = new Entry(tags, "Test Message", DateTime.Now);
+        var entry = new Entry("Test Message", tags, DateTime.Now);
         _repository.Save(entry);
         
         _repository.DeleteAll();
@@ -81,14 +81,13 @@ public class JsonRepositoryTests
     public void FindAll_ContainsMultiple_ReturnsList()
     {
         _repository.DeleteAll();
-        
         var entries = new List<Entry>()
         {
-            new(["tag0"], "Message 0", DateTime.Now),
-            new(["tag1"], "Message 1", DateTime.Now),
-            new(["tag2"], "Message 2", DateTime.Now),
-            new(["tag3"], "Message 3", DateTime.Now),
-            new(["tag4"], "Message 4", DateTime.Now),
+            new("Message 0", ["tag0"],  DateTime.Now),
+            new("Message 1", ["tag1"],  DateTime.Now),
+            new("Message 2", ["tag2"],  DateTime.Now),
+            new("Message 3", ["tag3"],  DateTime.Now),
+            new("Message 4", ["tag4"],  DateTime.Now),
         };
         entries.ForEach(e => _repository.Save(e));
 
@@ -119,11 +118,11 @@ public class JsonRepositoryTests
         _repository.DeleteAll();
         var entries = new List<Entry>()
         {
-            new(["tag0"], "Message 0", DateTime.Now),
-            new(["tag1"], "Message 1", DateTime.Now),
-            new(["tag2"], "Message 2", DateTime.Now),
-            new(["tag3"], "Message 3", DateTime.Now),
-            new(["tag4"], "Message 4", DateTime.Now),
+            new("Message 0", ["tag0"],  DateTime.Now),
+            new("Message 1", ["tag1"],  DateTime.Now),
+            new("Message 2", ["tag2"],  DateTime.Now),
+            new("Message 3", ["tag3"],  DateTime.Now),
+            new("Message 4", ["tag4"],  DateTime.Now),
         };
         entries.ForEach(e => _repository.Save(e));
         
@@ -136,11 +135,11 @@ public class JsonRepositoryTests
         _repository.DeleteAll();
         var entries = new List<Entry>()
         {
-            new(["tag0"], "Message 0", DateTime.Now),
-            new(["tag1"], "Message 1", DateTime.Now),
-            new(["tag2"], "Message 2", DateTime.Now),
-            new(["tag3"], "Message 3", DateTime.Now),
-            new(["tag4"], "Message 4", DateTime.Now),
+            new("Message 0", ["tag0"],  DateTime.Now),
+            new("Message 1", ["tag1"],  DateTime.Now),
+            new("Message 2", ["tag2"],  DateTime.Now),
+            new("Message 3", ["tag3"],  DateTime.Now),
+            new("Message 4", ["tag4"],  DateTime.Now),
         };
         entries.ForEach(e => _repository.Save(e));
 
@@ -163,11 +162,11 @@ public class JsonRepositoryTests
         _repository.DeleteAll();
         var entries = new List<Entry>()
         {
-            new(["tag0"], "Message 0", DateTime.Now),
-            new(["tag1"], "Message 1", DateTime.Now),
-            new(["tag2"], "Message 2", DateTime.Now),
-            new(["tag3"], "Message 3", DateTime.Now),
-            new(["tag4"], "Message 4", DateTime.Now),
+            new("Message 0", ["tag0"],  DateTime.Now),
+            new("Message 1", ["tag1"],  DateTime.Now),
+            new("Message 2", ["tag2"],  DateTime.Now),
+            new("Message 3", ["tag3"],  DateTime.Now),
+            new("Message 4", ["tag4"],  DateTime.Now),
         };
         entries.ForEach(e => _repository.Save(e));
 
@@ -181,11 +180,11 @@ public class JsonRepositoryTests
         _repository.DeleteAll();
         var entries = new List<Entry>()
         {
-            new(["tag0"], "Message 0", DateTime.Now),
-            new(["tag1"], "Message 1", DateTime.Now),
-            new(["tag2"], "Message 2", DateTime.Now),
-            new(["tag3"], "Message 3", DateTime.Now),
-            new(["tag4"], "Message 4", DateTime.Now),
+            new("Message 0", ["tag0"],  DateTime.Now),
+            new("Message 1", ["tag1"],  DateTime.Now),
+            new("Message 2", ["tag2"],  DateTime.Now),
+            new("Message 3", ["tag3"],  DateTime.Now),
+            new("Message 4", ["tag4"],  DateTime.Now),
         };
         entries.ForEach(e => _repository.Save(e));
 
@@ -202,11 +201,11 @@ public class JsonRepositoryTests
         _repository.DeleteAll();
         var entries = new List<Entry>()
         {
-            new(["tag0"], "Message 0", DateTime.Now),
-            new(["tag1"], "Message 1", DateTime.Now),
-            new(["tag2"], "Message 2", DateTime.Now),
-            new(["tag3"], "Message 3", DateTime.Now),
-            new(["tag4"], "Message 4", DateTime.Now),
+            new("Message 0", ["tag0"],  DateTime.Now),
+            new("Message 1", ["tag1"],  DateTime.Now),
+            new("Message 2", ["tag2"],  DateTime.Now),
+            new("Message 3", ["tag3"],  DateTime.Now),
+            new("Message 4", ["tag4"],  DateTime.Now),
         };
         entries.ForEach(e => _repository.Save(e));
 
@@ -224,11 +223,11 @@ public class JsonRepositoryTests
         _repository.DeleteAll();
         var entries = new List<Entry>()
         {
-            new(["tag0"], "Message 0", DateTime.Now),
-            new(["tag1"], "Message 1", DateTime.Now),
-            new(["tag2"], "Message 2", DateTime.Now),
-            new(["tag3"], "Message 3", DateTime.Now),
-            new(["tag4"], "Message 4", DateTime.Now),
+            new("Message 0", ["tag0"],  DateTime.Now),
+            new("Message 1", ["tag1"],  DateTime.Now),
+            new("Message 2", ["tag2"],  DateTime.Now),
+            new("Message 3", ["tag3"],  DateTime.Now),
+            new("Message 4", ["tag4"],  DateTime.Now),
         };
         entries.ForEach(e => _repository.Save(e));
 

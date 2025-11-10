@@ -6,7 +6,7 @@ public class Entry
     public string Message { get; set; }
     public DateTime CreatedAt { get; set; }
 
-    public Entry(List<string> tags, string message, DateTime createdAt)
+    public Entry(string message, List<string> tags, DateTime createdAt)
     {
         Tags.AddRange(tags);
         Message = message;
