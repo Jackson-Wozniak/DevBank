@@ -31,6 +31,11 @@ public class JsonRepository : IRepository
         var entriesStr = JsonSerializer.Serialize(entries);
         File.WriteAllText(_dataFilePath, entriesStr, Encoding.UTF8);
     }
+
+    public void DeleteAll()
+    {
+        File.WriteAllText(_dataFilePath, "");
+    }
     
     public void Save(Entry entry)
     {
@@ -41,12 +46,19 @@ public class JsonRepository : IRepository
 
     public List<Entry> FindByMessagePhrase(string phrase, bool ignoreWhiteSpace = false)
     {
-        throw new NotImplementedException();
+        if (ignoreWhiteSpace) phrase = phrase.Replace(" ", "");
+
+        return ReadFromFile().Where(entry =>
+        {
+            var message = ignoreWhiteSpace ? entry.Message.Replace(" ", "") : entry.Message;
+            return message.Contains(phrase);
+        }).ToList();
     }
 
     public List<Entry> FindByTags(List<string> tags)
     {
-        throw new NotImplementedException();
+        var entries = ReadFromFile();
+        return entries.Where(entry => entry.Tags.Any(tags.Contains)).ToList();
     }
 
     public List<Entry> FindAll(int count = -1)
