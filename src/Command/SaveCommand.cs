@@ -1,4 +1,7 @@
-﻿using DevBank.Console;
+﻿using System.Text.Json;
+using DevBank.Console;
+using DevBank.Exception;
+using DevBank.Model;
 using DevBank.Repository;
 
 namespace DevBank.Command;
@@ -26,6 +29,18 @@ public class SaveCommand : ICommand
 
     public void Execute(string[] args)
     {
-        throw new NotImplementedException();
+        var message = args[1];
+        
+        if (args.Length > 2 && args[2].ToLower() != "-t" && args[2].ToLower() != "--tags")
+        {
+            _console.WriteLine(ExceptionStrings.InvalidSaveFormatException);
+            return;
+        }
+
+        var tags = args.Skip(3).ToList();
+
+        var entry = new Entry(message, tags, DateTime.Now);
+        
+        _repository.Save(entry);
     }
 }

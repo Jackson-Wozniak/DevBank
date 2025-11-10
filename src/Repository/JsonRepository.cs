@@ -7,13 +7,14 @@ namespace DevBank.Repository;
 public class JsonRepository : IRepository
 {
     private readonly string _dataFilePath;
+    private readonly JsonSerializerOptions _options = new() { WriteIndented = true };
     
     //defaults to file path but allows for injecting a json file for tests
     public JsonRepository(string file = "./Data/entries.json")
     {
         if (!File.Exists(file))
         {
-            using(var stream = File.Create(file)){ }
+            using(File.Create(file)){ }
         }
         _dataFilePath = file;
     }
@@ -28,7 +29,7 @@ public class JsonRepository : IRepository
 
     private void WriteToFile(List<Entry> entries)
     {
-        var entriesStr = JsonSerializer.Serialize(entries);
+        var entriesStr = JsonSerializer.Serialize(entries, _options);
         File.WriteAllText(_dataFilePath, entriesStr, Encoding.UTF8);
     }
 
