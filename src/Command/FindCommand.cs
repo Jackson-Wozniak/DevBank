@@ -37,7 +37,6 @@ public class FindCommand : ICommand
             _console.WriteLine($"\"{entry.Message}\"");
             _console.WriteLine($"    tags: [{string.Join(", ", entry.Tags)}]");
             _console.WriteLine($"    created on: {entry.CreatedAt:f}");
-            _console.WriteLine("");
         }
     }
 }
