@@ -1,4 +1,12 @@
-﻿## :books: Table of Contents
+﻿<p align="center">
+  <img src="https://img.shields.io/github/v/release/Jackson-Wozniak/DevBank?style=for-the-badge" alt="Version"/>
+  <img src="https://img.shields.io/github/license/Jackson-Wozniak/DevBank?style=for-the-badge" alt="License"/>
+  <img src="https://img.shields.io/github/downloads/Jackson-Wozniak/DevBank/total?style=for-the-badge" alt="Downloads"/>
+  <img src="https://img.shields.io/github/issues/Jackson-Wozniak/DevBank?style=for-the-badge" alt="Issues"/>
+</p>
+
+
+## :books: Table of Contents
 
 <ol>
     <li><a href="#installation-guide">Installation Guide</a></li>
@@ -40,7 +48,7 @@
 <br/> 
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------- -->
 
-## :roadmap: Future Roadmap <a id="roadmap"></a>
+## :clipboard: Future Roadmap <a id="roadmap"></a>
 
 The following features are possibilities for future updates:
 
