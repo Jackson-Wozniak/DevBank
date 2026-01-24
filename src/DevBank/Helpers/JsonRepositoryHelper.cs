@@ -2,8 +2,12 @@
 
 public static class JsonRepositoryHelper
 {
+    public static string? OverrideBasePath { get; set; }
+    
     public static string GetDataPath()
     {
+        if (OverrideBasePath is not null) return OverrideBasePath;
+        
         string path;
 #if DEBUG
         string projectRoot = Directory.GetParent(AppContext.BaseDirectory)!.Parent!.Parent!.Parent!.FullName;

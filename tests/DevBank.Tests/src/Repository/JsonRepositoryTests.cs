@@ -1,12 +1,25 @@
-﻿using DevBank.Model;
+﻿using DevBank.Helpers;
+using DevBank.Model;
 using DevBank.Repository;
 
 namespace DevBank.Tests.Repository;
 
 public class JsonRepositoryTests
 {
-    private const string EntriesFilePath = "./TempData/entries.json";
+    private readonly string _filePath;
     private readonly JsonRepository _repository = new();
+    
+    public JsonRepositoryTests()
+    { 
+        var tempDir = Path.Combine(Path.GetTempPath(), "DevBankTests");
+        Directory.CreateDirectory(tempDir);
+        _filePath = Path.Combine(tempDir, "entries.json");
+        
+        if (File.Exists(_filePath)) File.Delete(_filePath);
+        File.WriteAllText(_filePath, "");
+
+        JsonRepositoryHelper.OverrideBasePath = _filePath;
+    }
     
     [Fact]
     public void Save_AppendOne_UpdatesFile()
@@ -65,7 +78,7 @@ public class JsonRepositoryTests
     {
         _repository.DeleteAll();
         
-        Assert.True(string.IsNullOrEmpty(File.ReadAllText(EntriesFilePath)));
+        Assert.True(string.IsNullOrEmpty(File.ReadAllText(_filePath)));
         
         var tags = new List<string> {"testTag"};
         var entry = new Entry("Test Message", tags, DateTime.Now);
@@ -73,7 +86,7 @@ public class JsonRepositoryTests
         
         _repository.DeleteAll();
         
-        Assert.True(string.IsNullOrEmpty(File.ReadAllText(EntriesFilePath)));
+        Assert.True(string.IsNullOrEmpty(File.ReadAllText(_filePath)));
     }
 
     [Fact]
