@@ -29,11 +29,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\DevBank.csproj" />
+      <Folder Include="src\Console\" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="src\Console\" />
+      <ProjectReference Include="..\..\src\DevBank\DevBank.csproj" />
     </ItemGroup>
 
 </Project>

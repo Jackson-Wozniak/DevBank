@@ -10,13 +10,29 @@ public class JsonRepository : IRepository
     private readonly JsonSerializerOptions _options = new() { WriteIndented = true };
     
     //defaults to file path but allows for injecting a json file for tests
-    public JsonRepository(string file = "./Data/entries.json")
+    public JsonRepository(string? file = null)
     {
-        if (!File.Exists(file))
+        if (string.IsNullOrWhiteSpace(file))
         {
-            using(File.Create(file)){ }
+            var dataFolder = Path.Combine(AppContext.BaseDirectory, "Data");
+            Directory.CreateDirectory(dataFolder); // ensure folder exists
+            _dataFilePath = Path.Combine(dataFolder, "entries.json");
         }
-        _dataFilePath = file;
+        else
+        {
+            _dataFilePath = file;
+
+            var folder = Path.GetDirectoryName(file);
+            if (!string.IsNullOrWhiteSpace(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+        }
+        
+        if (!File.Exists(_dataFilePath))
+        {
+            using var stream = File.Create(_dataFilePath);
+        }
     }
 
     private List<Entry> ReadFromFile()
