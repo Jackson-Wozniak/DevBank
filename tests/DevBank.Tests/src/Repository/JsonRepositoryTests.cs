@@ -5,8 +5,8 @@ namespace DevBank.Tests.Repository;
 
 public class JsonRepositoryTests
 {
-    private const string EntriesFilePath = "./Data/test_entries.json";
-    private readonly JsonRepository _repository = new(EntriesFilePath);
+    private const string EntriesFilePath = "./TempData/entries.json";
+    private readonly JsonRepository _repository = new();
     
     [Fact]
     public void Save_AppendOne_UpdatesFile()

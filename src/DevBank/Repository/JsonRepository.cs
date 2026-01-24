@@ -1,39 +1,14 @@
 ﻿using System.Text;
 using System.Text.Json;
+using DevBank.Helpers;
 using DevBank.Model;
 
 namespace DevBank.Repository;
 
 public class JsonRepository : IRepository
 {
-    private readonly string _dataFilePath;
+    private readonly string _dataFilePath = JsonRepositoryHelper.GetDataPath();
     private readonly JsonSerializerOptions _options = new() { WriteIndented = true };
-    
-    //defaults to file path but allows for injecting a json file for tests
-    public JsonRepository(string? file = null)
-    {
-        if (string.IsNullOrWhiteSpace(file))
-        {
-            var dataFolder = Path.Combine(AppContext.BaseDirectory, "Data");
-            Directory.CreateDirectory(dataFolder); // ensure folder exists
-            _dataFilePath = Path.Combine(dataFolder, "entries.json");
-        }
-        else
-        {
-            _dataFilePath = file;
-
-            var folder = Path.GetDirectoryName(file);
-            if (!string.IsNullOrWhiteSpace(folder))
-            {
-                Directory.CreateDirectory(folder);
-            }
-        }
-        
-        if (!File.Exists(_dataFilePath))
-        {
-            using var stream = File.Create(_dataFilePath);
-        }
-    }
 
     private List<Entry> ReadFromFile()
     {
