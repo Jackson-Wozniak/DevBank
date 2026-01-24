@@ -1,10 +1,9 @@
 ﻿using DevBank.Console;
-using DevBank.Exception;
 using DevBank.Repository;
 
-namespace DevBank.Command;
+namespace DevBank.Commands;
 
-public class DeleteCommand : ICommand
+public class DeleteCommand
 {
     private readonly IRepository _repository;
     private readonly IConsole _console;
@@ -23,18 +22,5 @@ public class DeleteCommand : ICommand
     public static DeleteCommand Create(IRepository r, IConsole c)
     {
         return new DeleteCommand(r, c);
-    }
-
-    public void Execute(string[] args)
-    {
-        if (args.Length != 2 || args[1].ToLower() != ".")
-        {
-            _console.WriteLine(ExceptionStrings.InvalidDeleteFormatException);
-            return;
-        }
-
-        var deletedCount = _repository.DeleteAll();
-        
-        _console.WriteLine($"Deleted {deletedCount} entries.");
     }
 }

@@ -1,9 +1,9 @@
 ﻿using DevBank.Console;
 using DevBank.Repository;
 
-namespace DevBank.Command;
+namespace DevBank.Commands;
 
-public class FindCommand : ICommand
+public class FindCommand
 {
     private readonly IRepository _repository;
     private readonly IConsole _console;
