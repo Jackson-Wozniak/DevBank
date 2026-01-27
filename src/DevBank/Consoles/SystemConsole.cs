@@ -2,6 +2,10 @@
 
 public class SystemConsole : IConsole
 {
-    public void Write(string str) => System.Console.Write(str);
-    public void WriteLine(string str) => System.Console.WriteLine(str);
+    private SystemConsole(){ }
+
+    public static SystemConsole Instance { get; } = new SystemConsole();
+
+    public void Write(string str) => Console.Write(str);
+    public void WriteLine(string str) => Console.WriteLine(str);
 }

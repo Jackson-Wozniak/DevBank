@@ -17,7 +17,7 @@ public class FindCommand
 
     public static Command Create(IRepository? r = null, IConsole? c = null)
     {
-        return new FindCommand(r ?? new JsonRepository(), c ?? new SystemConsole())
+        return new FindCommand(r ?? JsonRepository.Instance, c ?? SystemConsole.Instance)
             .CreateCommand();
     }
 

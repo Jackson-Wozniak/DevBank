@@ -7,8 +7,11 @@ namespace DevBank.Repositories;
 
 public class JsonRepository : IRepository
 {
+    public static JsonRepository Instance { get; } = new JsonRepository();
     private readonly string _dataFilePath = JsonRepositoryHelper.GetDataPath();
     private readonly JsonSerializerOptions _options = new() { WriteIndented = true };
+    
+    private JsonRepository(){ }
 
     private List<Entry> ReadFromFile()
     {

@@ -18,7 +18,7 @@ public class SaveCommand
 
     public static Command Create(IRepository? r = null, IConsole? c = null)
     {
-        return new SaveCommand(r ?? new JsonRepository(), c ?? new SystemConsole())
+        return new SaveCommand(r ?? JsonRepository.Instance, c ?? SystemConsole.Instance)
             .CreateCommand();
     }
 
