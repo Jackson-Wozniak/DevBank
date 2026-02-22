@@ -16,6 +16,11 @@ class Program
         var entryService = new EntryService(new JsonRepository());
         var systemConsole = new SystemConsole();
         
+        rootCommand.Add(SaveCommand.Create(entryService, systemConsole));
+        rootCommand.Add(ListCommand.Create(entryService, systemConsole));
+        rootCommand.Add(FindCommand.Create(entryService, systemConsole));
+        rootCommand.Add(ClearCommand.Create(entryService, systemConsole));
+        
         var versionCommand = new Command("--version"){ Aliases = { "-v" }};
         versionCommand.SetAction(_ =>
         {
@@ -25,11 +30,6 @@ class Program
                 .InformationalVersion ?? "unknown";
             systemConsole.WriteLine($"DevNote v{version}");
         });
-        
-        rootCommand.Add(SaveCommand.Create(entryService, systemConsole));
-        rootCommand.Add(ListCommand.Create(entryService, systemConsole));
-        rootCommand.Add(FindCommand.Create(entryService, systemConsole));
-        rootCommand.Add(ClearCommand.Create(entryService, systemConsole));
         rootCommand.Add(versionCommand);
 
         rootCommand.Parse(args).Invoke();
