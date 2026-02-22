@@ -7,8 +7,13 @@ namespace DevNote.Repositories;
 
 public class JsonRepository : IRepository
 {
-    private readonly string _dataFilePath = JsonRepositoryHelper.GetDataPath();
+    private readonly string _dataFilePath;
     private readonly JsonSerializerOptions _options = new() { WriteIndented = true };
+
+    public JsonRepository(string? path = null)
+    {
+        _dataFilePath = path ?? JsonRepositoryHelper.AppDataPath;
+    }
 
     private List<Entry> ReadFromFile()
     {
