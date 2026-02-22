@@ -2,24 +2,24 @@
 using DevNote.Consoles;
 using DevNote.Models;
 using DevNote.Repositories;
+using DevNote.Services;
 
 namespace DevNote.Commands;
 
 public class SaveCommand
 {
-    private readonly IRepository _repository;
+    private readonly EntryService _entryService;
     private readonly IConsole _console;
 
-    private SaveCommand(IRepository repository, IConsole console)
+    private SaveCommand(EntryService entryService, IConsole console)
     {
-        _repository = repository;
+        _entryService = entryService;
         _console = console;
     }
 
-    public static Command Create(IRepository? r = null, IConsole? c = null)
+    public static Command Create(EntryService entryService, IConsole c)
     {
-        return new SaveCommand(r ?? JsonRepository.Instance, c ?? SystemConsole.Instance)
-            .CreateCommand();
+        return new SaveCommand(entryService, c).CreateCommand();
     }
 
     private Command CreateCommand()
@@ -90,7 +90,7 @@ public class SaveCommand
             IsStarred = starred
         };
         
-        _repository.Save(entry);
+        _entryService.SaveEntry(entry);
         _console.WriteLine("Entry saved successfully.");
     }
 }

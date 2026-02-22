@@ -1,24 +1,25 @@
 ﻿using System.CommandLine;
 using DevNote.Consoles;
+using DevNote.Models;
 using DevNote.Repositories;
+using DevNote.Services;
 
 namespace DevNote.Commands;
 
 public class FindCommand
 {
-    private readonly IRepository _repository;
+    private readonly EntryService _entryService;
     private readonly IConsole _console;
 
-    protected FindCommand(IRepository repository, IConsole console)
+    private FindCommand(EntryService entryService, IConsole console)
     {
-        _repository = repository;
+        _entryService = entryService;
         _console = console;
     }
 
-    public static Command Create(IRepository? r = null, IConsole? c = null)
+    public static Command Create(EntryService entryService, IConsole c)
     {
-        return new FindCommand(r ?? JsonRepository.Instance, c ?? SystemConsole.Instance)
-            .CreateCommand();
+        return new FindCommand(entryService, c).CreateCommand();
     }
 
     private Command CreateCommand()
@@ -50,7 +51,7 @@ public class FindCommand
 
     private void Execute(string? phrase, List<string> tags)
     {
-        var entries = _repository.FindAll()
+        var entries = _entryService.SearchEntries(new SearchParams())
             .Where(e => phrase == null || e.Content.Contains(phrase))
             .Where(_ => tags.Count == 0 || tags.Any(tags.Contains))
             .OrderByDescending(e => e.CreatedAt)

@@ -2,24 +2,24 @@
 using DevNote.Consoles;
 using DevNote.Repositories;
 using DevNote.Models;
+using DevNote.Services;
 
 namespace DevNote.Commands;
 
 public class ListCommand
 {
-    private readonly IRepository _repository;
+    private readonly EntryService _entryService;
     private readonly IConsole _console;
 
-    protected ListCommand(IRepository repository, IConsole console)
+    private ListCommand(EntryService entryService, IConsole console)
     {
-        _repository = repository;
+        _entryService = entryService;
         _console = console;
     }
 
-    public static Command Create(IRepository? r = null, IConsole? c = null)
+    public static Command Create(EntryService entryService, IConsole c)
     {
-        return new ListCommand(r ?? JsonRepository.Instance, c ?? SystemConsole.Instance)
-            .CreateCommand();
+        return new ListCommand(entryService, c).CreateCommand();
     }
 
     private Command CreateCommand()
@@ -41,7 +41,7 @@ public class ListCommand
 
     private void Execute(int maxEntries)
     {
-        List<Entry> entries = _repository.FindAll()
+        List<Entry> entries = _entryService.FindEntries()
             .OrderByDescending(e => e.CreatedAt)
             .Take(maxEntries)
             .ToList();

@@ -1,4 +1,4 @@
-﻿namespace DevNote.Models;
+namespace DevNote.Models;
 
 public class SearchParams
 {

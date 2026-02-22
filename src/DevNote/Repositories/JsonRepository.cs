@@ -7,11 +7,8 @@ namespace DevNote.Repositories;
 
 public class JsonRepository : IRepository
 {
-    public static JsonRepository Instance { get; } = new JsonRepository();
     private readonly string _dataFilePath = JsonRepositoryHelper.GetDataPath();
     private readonly JsonSerializerOptions _options = new() { WriteIndented = true };
-
-    public JsonRepository(){ }
 
     private List<Entry> ReadFromFile()
     {
@@ -41,10 +38,8 @@ public class JsonRepository : IRepository
         WriteToFile(entries);
     }
 
-    public List<Entry> FindAll(int count = -1)
+    public List<Entry> FindAll()
     {
-        var entries = ReadFromFile();
-        if (count < 0) return entries;
-        return entries.Take(count).ToList();
+        return ReadFromFile();
     }
 }
