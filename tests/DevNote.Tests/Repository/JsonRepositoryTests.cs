@@ -3,6 +3,7 @@ using DevNote.Repositories;
 
 namespace DevNote.Tests.Repository;
 
+[Collection("Tests")]
 public class JsonRepositoryTests : IDisposable
 {
     private readonly string _filePath;
