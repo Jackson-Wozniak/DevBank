@@ -1,7 +1,7 @@
 ﻿<p align="center">
   <img src="https://img.shields.io/github/v/release/Jackson-Wozniak/DevNote?style=for-the-badge" alt="Version"/>
   <img src="https://img.shields.io/github/license/Jackson-Wozniak/DevNote?style=for-the-badge" alt="License"/>
-  <img src="https://img.shields.io/github/downloads/Jackson-Wozniak/DevNote/total?style=for-the-badge" alt="Downloads"/>
+  <img src="https://img.shields.io/github/downloads/Jackson-Wozniak/DevNote/total?style=for-the-badge&color=blueviolet" alt="Downloads"/>
   <img src="https://img.shields.io/github/issues/Jackson-Wozniak/DevNote?style=for-the-badge" alt="Issues"/>
 </p>
 
