@@ -30,32 +30,51 @@ public class FindCommand
         {
             Arity = ArgumentArity.ZeroOrOne
         };
+        
         var tagsOption = new Option<string[]>("--tags", "-t")
         {
             AllowMultipleArgumentsPerToken = true
         };
+        var projectsOption = new Option<string>("--project", "-p");
+        var langOption = new Option<string>("--lang");
+        var starredOption = new Option<bool>("--star");
         
-        command.Arguments.Add(contentArgument);
         command.Options.Add(tagsOption);
+        command.Options.Add(projectsOption);
+        command.Options.Add(langOption);
+        command.Options.Add(starredOption);
         
         command.SetAction(result =>
         {
             string? content = result.GetValue(contentArgument);
             
+            if (string.IsNullOrEmpty(content))
+            {
+                _console.WriteLine("Error: content is required");
+                _console.WriteLine("Usage: DevNote find \"content\" [...]");
+                return;
+            }
+            
             var tags = result.GetValue(tagsOption) ?? [];
-            Execute(content, tags.ToList());
+            var project = result.GetValue(projectsOption);
+            var language = result.GetValue(langOption);
+            var starred = result.GetValue(starredOption);
+            var searchParams = new SearchParams(content)
+            {
+                Tags = tags.ToList(),
+                Project = project,
+                Language = language,
+                IsStarred =  starred,
+            };
+            Execute(searchParams);
         });
 
         return command;
     }
 
-    private void Execute(string? phrase, List<string> tags)
+    private void Execute(SearchParams searchParams)
     {
-        var entries = _entryService.SearchEntries(new SearchParams())
-            .Where(e => phrase == null || e.Content.Contains(phrase))
-            .Where(_ => tags.Count == 0 || tags.Any(tags.Contains))
-            .OrderByDescending(e => e.CreatedAt)
-            .ToList();
+        var entries = _entryService.SearchEntries(searchParams);
         
         _console.WriteLine($"Found ({entries.Count}) matching entries:");
         _console.WriteLine("");

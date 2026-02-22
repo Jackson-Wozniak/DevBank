@@ -58,8 +58,8 @@ public class SaveCommand
             
             if (string.IsNullOrEmpty(content))
             {
-                _console.WriteLine("Error: --message is required");
-                _console.WriteLine("Usage: DevNote save --message <value> [--tags ...]");
+                _console.WriteLine("Error: content is required");
+                _console.WriteLine("Usage: DevNote save \"content\" [...]");
                 return;
             }
             
@@ -70,8 +70,7 @@ public class SaveCommand
             var link = result.GetValue(linkOption);
             var language = result.GetValue(langOption);
             var starred = result.GetValue(starredOption);
-            Execute(content, project, source, note, 
-                link, language, starred, tags.ToList());
+            Execute(content, project, source, note, link, language, starred, tags.ToList());
         });
 
         return command;

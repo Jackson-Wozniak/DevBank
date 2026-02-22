@@ -30,6 +30,8 @@ public class EntryService
 
     public List<Entry> SearchEntries(SearchParams searchParams)
     {
-        return _repository.FindAll();
+        return _repository.FindAll()
+            .Where(searchParams.EntryMatchesAll)
+            .ToList();
     }
 }

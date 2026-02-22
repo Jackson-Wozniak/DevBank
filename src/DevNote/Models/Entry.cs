@@ -5,7 +5,6 @@ public class Entry
     public string Content { get; set; }
     public string? Project { get; set; }
     public string? Source { get; set; }
-    public string? Priority { get; set; }
     public string? Note { get; set; }
     public string? Language { get; set; }
     public string? Link { get; set; }
