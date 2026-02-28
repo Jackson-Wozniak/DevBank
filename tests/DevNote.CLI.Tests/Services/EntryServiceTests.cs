@@ -1,8 +1,8 @@
-using DevNote.Models;
-using DevNote.Repositories;
-using DevNote.Services;
+using DevNote.CLI.Models;
+using DevNote.CLI.Repositories;
+using DevNote.CLI.Services;
 
-namespace DevNote.Tests.Services;
+namespace DevNote.CLI.Tests.Services;
 
 [Collection("Tests")]
 public class EntryServiceTests : IDisposable

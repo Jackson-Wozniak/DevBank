@@ -1,9 +1,9 @@
 ﻿using System.Text;
 using System.Text.Json;
-using DevNote.Helpers;
-using DevNote.Models;
+using DevNote.CLI.Helpers;
+using DevNote.CLI.Models;
 
-namespace DevNote.Repositories;
+namespace DevNote.CLI.Repositories;
 
 public class JsonRepository : IRepository
 {

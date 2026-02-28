@@ -1,12 +1,11 @@
 ﻿using System.CommandLine;
-using System.CommandLine.Invocation;
 using System.Reflection;
-using DevNote.Commands;
-using DevNote.Consoles;
-using DevNote.Repositories;
-using DevNote.Services;
+using DevNote.CLI.Commands;
+using DevNote.CLI.Consoles;
+using DevNote.CLI.Repositories;
+using DevNote.CLI.Services;
 
-namespace DevNote;
+namespace DevNote.CLI;
 
 class Program
 {

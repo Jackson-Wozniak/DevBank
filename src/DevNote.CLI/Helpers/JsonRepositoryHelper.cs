@@ -1,4 +1,4 @@
-﻿namespace DevNote.Helpers;
+﻿namespace DevNote.CLI.Helpers;
 
 public static class JsonRepositoryHelper
 {

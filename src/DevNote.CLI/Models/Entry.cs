@@ -1,4 +1,4 @@
-﻿namespace DevNote.Models;
+﻿namespace DevNote.CLI.Models;
 
 public class Entry
 {

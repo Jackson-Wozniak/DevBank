@@ -1,4 +1,4 @@
-﻿namespace DevNote.Consoles;
+﻿namespace DevNote.CLI.Consoles;
 
 public interface IConsole
 {

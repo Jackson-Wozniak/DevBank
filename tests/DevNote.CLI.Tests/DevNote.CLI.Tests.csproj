@@ -30,7 +30,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\DevNote\DevNote.csproj" />
+      <ProjectReference Include="..\..\src\DevNote.CLI\DevNote.CLI.csproj" />
     </ItemGroup>
 
 </Project>

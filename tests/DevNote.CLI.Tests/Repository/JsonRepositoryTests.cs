@@ -1,7 +1,7 @@
-﻿using DevNote.Models;
-using DevNote.Repositories;
+﻿using DevNote.CLI.Models;
+using DevNote.CLI.Repositories;
 
-namespace DevNote.Tests.Repository;
+namespace DevNote.CLI.Tests.Repository;
 
 [Collection("Tests")]
 public class JsonRepositoryTests : IDisposable

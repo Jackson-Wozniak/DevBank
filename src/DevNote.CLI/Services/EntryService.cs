@@ -1,7 +1,7 @@
-﻿using DevNote.Models;
-using DevNote.Repositories;
+﻿using DevNote.CLI.Models;
+using DevNote.CLI.Repositories;
 
-namespace DevNote.Services;
+namespace DevNote.CLI.Services;
 
 public class EntryService
 {

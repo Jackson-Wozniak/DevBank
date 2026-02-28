@@ -1,9 +1,8 @@
 ﻿using System.CommandLine;
-using DevNote.Consoles;
-using DevNote.Repositories;
-using DevNote.Services;
+using DevNote.CLI.Consoles;
+using DevNote.CLI.Services;
 
-namespace DevNote.Commands;
+namespace DevNote.CLI.Commands;
 
 public class ClearCommand
 {

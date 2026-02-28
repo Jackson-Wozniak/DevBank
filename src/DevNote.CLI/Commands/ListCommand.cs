@@ -1,10 +1,9 @@
 ﻿using System.CommandLine;
-using DevNote.Consoles;
-using DevNote.Repositories;
-using DevNote.Models;
-using DevNote.Services;
+using DevNote.CLI.Consoles;
+using DevNote.CLI.Models;
+using DevNote.CLI.Services;
 
-namespace DevNote.Commands;
+namespace DevNote.CLI.Commands;
 
 public class ListCommand
 {
