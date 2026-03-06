@@ -1,6 +1,6 @@
 ﻿using System.CommandLine;
 using DevNote.CLI.Consoles;
-using DevNote.CLI.Services;
+using DevNote.Shared.Services;
 
 namespace DevNote.CLI.Commands;
 

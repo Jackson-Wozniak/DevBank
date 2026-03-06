@@ -1,7 +1,7 @@
 ﻿using System.CommandLine;
 using DevNote.CLI.Consoles;
-using DevNote.CLI.Models;
-using DevNote.CLI.Services;
+using DevNote.Shared.Models;
+using DevNote.Shared.Services;
 
 namespace DevNote.CLI.Commands;
 

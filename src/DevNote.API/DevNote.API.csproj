@@ -21,4 +21,8 @@
       <Folder Include="Services\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\DevNote.Shared\DevNote.Shared.csproj" />
+    </ItemGroup>
+
 </Project>

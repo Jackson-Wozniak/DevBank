@@ -11,4 +11,7 @@
     <ItemGroup>
       <PackageReference Include="System.CommandLine" Version="2.0.2" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\DevNote.Shared\DevNote.Shared.csproj" />
+    </ItemGroup>
 </Project>

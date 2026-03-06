@@ -2,8 +2,8 @@
 using System.Reflection;
 using DevNote.CLI.Commands;
 using DevNote.CLI.Consoles;
-using DevNote.CLI.Repositories;
-using DevNote.CLI.Services;
+using DevNote.Shared.Repositories;
+using DevNote.Shared.Services;
 
 namespace DevNote.CLI;
 

@@ -1,4 +1,4 @@
-namespace DevNote.CLI.Models;
+namespace DevNote.Shared.Models;
 
 public class SearchParams
 {

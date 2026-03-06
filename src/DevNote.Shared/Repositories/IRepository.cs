@@ -1,6 +1,6 @@
-﻿using DevNote.CLI.Models;
+﻿using DevNote.Shared.Models;
 
-namespace DevNote.CLI.Repositories;
+namespace DevNote.Shared.Repositories;
 
 public interface IRepository
 {
