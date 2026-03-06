@@ -38,6 +38,7 @@ public class FindCommand
         var langOption = new Option<string>("--lang");
         var starredOption = new Option<bool>("--star");
         
+        command.Arguments.Add(contentArgument);
         command.Options.Add(tagsOption);
         command.Options.Add(projectsOption);
         command.Options.Add(langOption);
