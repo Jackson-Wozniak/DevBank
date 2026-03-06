@@ -16,13 +16,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Exceptions\" />
-      <Folder Include="Repositories\" />
-      <Folder Include="Services\" />
+      <ProjectReference Include="..\DevNote.Shared\DevNote.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DevNote.Shared\DevNote.Shared.csproj" />
+      <Folder Include="Dtos\" />
     </ItemGroup>
 
 </Project>
